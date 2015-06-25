@@ -14,6 +14,7 @@
 		414EEF4A1B3C5B1500F0A145 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 414EEF491B3C5B1500F0A145 /* Images.xcassets */; };
 		414EEF4D1B3C5B1500F0A145 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 414EEF4B1B3C5B1500F0A145 /* LaunchScreen.xib */; };
 		414EEF591B3C5B1500F0A145 /* NISDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414EEF581B3C5B1500F0A145 /* NISDateTests.swift */; };
+		414EEF641B3C5C5200F0A145 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414EEF631B3C5C5200F0A145 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		414EEF521B3C5B1500F0A145 /* NISDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NISDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		414EEF571B3C5B1500F0A145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		414EEF581B3C5B1500F0A145 /* NISDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NISDateTests.swift; sourceTree = "<group>"; };
+		414EEF631B3C5C5200F0A145 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		414EEF3C1B3C5B1500F0A145 /* NISDate */ = {
 			isa = PBXGroup;
 			children = (
+				414EEF621B3C5C2300F0A145 /* Views */,
 				414EEF3F1B3C5B1500F0A145 /* AppDelegate.swift */,
 				414EEF441B3C5B1500F0A145 /* ViewController.swift */,
 				414EEF461B3C5B1500F0A145 /* Main.storyboard */,
@@ -113,6 +116,14 @@
 				414EEF571B3C5B1500F0A145 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		414EEF621B3C5C2300F0A145 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				414EEF631B3C5C5200F0A145 /* CardView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +228,7 @@
 			files = (
 				414EEF451B3C5B1500F0A145 /* ViewController.swift in Sources */,
 				414EEF431B3C5B1500F0A145 /* NISDate.xcdatamodeld in Sources */,
+				414EEF641B3C5C5200F0A145 /* CardView.swift in Sources */,
 				414EEF401B3C5B1500F0A145 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
