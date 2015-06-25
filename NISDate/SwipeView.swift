@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 class SwipeView: UIView {
+    
     private let card: CardView = CardView()
     
+    //store the original location of card
+    private var originalPoint: CGPoint?
     
     //MARK: - initializers
     
@@ -34,6 +37,9 @@ class SwipeView: UIView {
         //dragged is a function; the colon (:) is because it takes a parameter
         self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "dragged:"))
         
+        originalPoint = center //center from UIView
+        
+        
         //we'll define the constraints ourselves
         card.setTranslatesAutoresizingMaskIntoConstraints(false)
         
@@ -44,6 +50,8 @@ class SwipeView: UIView {
     func dragged(gestureRecognizer: UIPanGestureRecognizer) {
         let distance = gestureRecognizer.translationInView(self)
         println("Distance x:\(distance.x) y: \(distance.y)")
+        center = CGPointMake(originalPoint!.x + distance.x, originalPoint!.y + distance.y)
+        
     }
     
     
