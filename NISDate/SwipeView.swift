@@ -37,9 +37,6 @@ class SwipeView: UIView {
         //dragged is a function; the colon (:) is because it takes a parameter
         self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "dragged:"))
         
-        originalPoint = center //center from UIView
-        
-        
         //we'll define the constraints ourselves
         card.setTranslatesAutoresizingMaskIntoConstraints(false)
         
@@ -50,10 +47,28 @@ class SwipeView: UIView {
     func dragged(gestureRecognizer: UIPanGestureRecognizer) {
         let distance = gestureRecognizer.translationInView(self)
         println("Distance x:\(distance.x) y: \(distance.y)")
-        center = CGPointMake(originalPoint!.x + distance.x, originalPoint!.y + distance.y)
+        
+        //update this function to return to center
+        switch gestureRecognizer.state {
+        case UIGestureRecognizerState.Began:
+            //when we start dragging, tell our original point that it is the center
+            originalPoint = center //center property is from UIView
+        case UIGestureRecognizerState.Changed:
+            center = CGPointMake(originalPoint!.x + distance.x, originalPoint!.y + distance.y)
+        case UIGestureRecognizerState.Ended:
+            resetViewPositionAndTransformations()
+        default:
+            //something went wrong here
+            println("Default triggered for GestureRecognizer")
+            break
+        }
         
     }
     
+    //snap back to center after moving
+    private func resetViewPositionAndTransformations() {
+        UIView.animateWithDuration(0.2, animations: { () -> Void in self.center = self.originalPoint! })
+    }
     
     
     private func setConstraints() {
