@@ -11,6 +11,12 @@ import UIKit
 
 class SwipeView: UIView {
     
+    enum Direction {
+        case None
+        case Left
+        case Right
+    }
+    
     private let card: CardView = CardView()
     
     //store the original location of card
@@ -60,18 +66,42 @@ class SwipeView: UIView {
             let rotationPercentage = min(distance.x/(self.superview!.frame.width/2), 1)
             let rotationAngle = (CGFloat(2*M_PI/16) * rotationPercentage)
             //gives us how much to rotate
-            transform = CGAffineTransformRotate(transform, rotationAngle)
+            transform = CGAffineTransformMakeRotation(rotationAngle)
             
             
             
             center = CGPointMake(originalPoint!.x + distance.x, originalPoint!.y + distance.y)
         case UIGestureRecognizerState.Ended:
-            resetViewPositionAndTransformations()
+            
+            if abs(distance.x) < frame.width/4 {
+                 //reset if user only went 1/4 of the direction
+                resetViewPositionAndTransformations()
+            } else {
+                swipe(distance.x > 0 ? .Right : .Left)
+            }
+            
+            
         default:
             //something went wrong here
             println("Default triggered for GestureRecognizer")
             break
         }
+        
+    }
+    
+    func swipe(s: Direction) {
+        if s == .None {
+            //equivalent to Direction.None
+            return
+        }
+        var parentWidth = superview!.frame.size.width
+        if s == .Left {
+            parentWidth *= -1
+        }
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.center.x = self.frame.origin.x + parentWidth
+        })
+
         
     }
     
